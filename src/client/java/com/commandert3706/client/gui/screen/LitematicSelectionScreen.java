@@ -1,6 +1,8 @@
 package com.commandert3706.client.gui.screen;
 
 import com.commandert3706.BetterLitematicaMaterialsList;
+import com.commandert3706.client.BetterLitematicaMaterialsListClient;
+import com.commandert3706.client.logic.MaterialTrackerManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
@@ -8,6 +10,7 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ObjectSelectionList;
 import net.minecraft.client.gui.components.toasts.SystemToast;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 import org.jspecify.annotations.Nullable;
@@ -32,7 +35,7 @@ public class LitematicSelectionScreen extends Screen {
         this.selectButton = this.addRenderableWidget(
                 Button.builder(Component.literal("Load Materials List"), (button) -> {
                     if (this.selectedFile != null) {
-                        BetterLitematicaMaterialsList.LOGGER.info(this.selectedFile.getName());
+                        MaterialTrackerManager.loadSchematicAsync(selectedFile);
                         this.minecraft.setScreen(null);
                     }
                 }).bounds(this.width / 2 - 122, this.height - 26, 120, 20).build()
@@ -76,6 +79,16 @@ public class LitematicSelectionScreen extends Screen {
 
         this.fileList.extractRenderState(graphics, mouseX, mouseY, a);
         graphics.centeredText(this.font, this.title, (this.width / 2), 16, 0xFFFFFFFF);
+    }
+
+    @Override
+    public boolean keyPressed(KeyEvent event) {
+        if (BetterLitematicaMaterialsListClient.selectSchematicKey.matches(event)) {
+            this.minecraft.setScreen(null);
+            return true;
+        }
+
+        return super.keyPressed(event);
     }
 
     class FileListWidget extends ObjectSelectionList<FileEntry> {

@@ -3,15 +3,15 @@
 	"id": "blml",
 	"version": "${version}",
 	"name": "Better Litematica Materials List",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A simple mod that adds a better material list to Litematica",
 	"authors": [
-		"Me!"
+		"CommanderT3706"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/CommanderT3706/better-litematica-materials-list",
+		"sources": "https://github.com/CommanderT3706/better-litematica-materials-list"
 	},
-	"license": "CC0-1.0",
+	"license": "GNU GPLv3",
 	"icon": "assets/blml/icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -22,13 +22,7 @@
 			"com.commandert3706.client.BetterLitematicaMaterialsListClient"
 		]
 	},
-	"mixins": [
-		"blml.mixins.json",
-		{
-			"config": "blml.client.mixins.json",
-			"environment": "client"
-		}
-	],
+	"mixins": [],
 	"depends": {
 		"fabricloader": ">=0.19.2",
 		"minecraft": "~26.1.2",
