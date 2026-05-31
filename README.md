@@ -1,7 +1,7 @@
 # Better Litematica Materials List
 
 
-A lightweight, quality-of-life Fabric mod designed for builders who use Litematica. It provides an interactive, persistent checklist dashboard of all the materials required for your active schematic.
+A lightweight, quality-of-life Fabric mod designed for Litematica users. It provides an interactive, persistent checklist dashboard of all the materials required for your schematic.
 ![](demo.png)
 
 ---
